@@ -33,11 +33,10 @@
               <table id="stats" class="display table nowrap responsive" style="width: 100%">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Url:</th>
-                    <th>Ip:</th>
                     <th>Date:</th>
-                    <th>Origin:</th>
-                    <!--th>Referer</th-->
+                    <th>Ip:</th>
                     <th>Agent:</th>
                     <th></th>
                   </tr>
@@ -59,16 +58,22 @@
         ],
          
         'columns': [
+          {
+            'data': () => {return ''},
+            'orderable': false
+          },
           {'data': 'Url'},
-          {'data': 'Ip'},
           {'data': 'Date'},
-          {'data': 'Origin'},
-          //{'data': 'Referer'},
+          {'data': 'Ip'},
           {'data': 'Agent'},
           {'data': '_id'}
         ],
         
         'columnDefs': [
+          {
+            targets: 1,
+            render: (data) => { return '<a target="_blank" href="' + data + '">' + data + '</a>'}
+          },
           {
             targets: 4,
             render: (data) => { return '<div class="text-wrap">' + data + '</div>' }
